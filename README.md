@@ -59,9 +59,11 @@ The endpoints are listed below:
 
 The code is laid out using the diagram below:
 
+<pre>
    ____________       _________       ____________       __________
   | Controller | <-> [ Service | <-> [ Repository | <-> [ Postgres ]
    ------------       ---------       ------------       ----------
+</pre>
 
   The rest end points reside in the Controller class, and all business logic
   such as enrichment and filtering data, when we get the data from database.
@@ -72,20 +74,23 @@ The code is laid out using the diagram below:
   mostly occurs in the Controller module, since this is where data leaves the service
   and gets converted to JSON. The image below makes an attempt to explain.
 
+<pre>
    ____________       _________       ____________       __________
   | Controller | <-> [ Service | <-> [ Repository | <-> [ Postgres ]
    ------------       ---------       ------------       ----------
-
                ________
               | Mapper |
                --------
+</pre>
 
   I have also added the a few Exception class, in case the platform resource is not found.
 
  # Things needed to run this code:
 
- First create a dabase "platform" in the postgres database :<br/>
- DATABASE : platform<br/>
+ First create a database "platform" in the postgres database :<br/>
+<pre>
+ DATABASE : platform
+</pre>
 
  Then run the schema below, create the tables:<br/>
 
@@ -103,7 +108,6 @@ WITH (
     OIDS = FALSE
 )
 TABLESPACE pg_default;
-
 
 CREATE INDEX token_idx
     ON public.users USING btree
